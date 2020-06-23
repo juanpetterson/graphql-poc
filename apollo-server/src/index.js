@@ -1,13 +1,40 @@
 const { ApolloServer, gql } = require('apollo-server');
 
 const typeDefs = gql`
+  type User {
+    _id: ID!
+    name: String!
+    email: String!
+    active: Boolean!
+  }
+
+  type Post {
+    _id: ID!
+    title: String!
+    content: String!
+    author: User!
+  }
+
   type Query {
     hello: String
+    users: [User!]!
+    getUserByEmail(email: String): User!
   }
 `;
+
+const users = [
+  { _id: String(Math.random()), name: 'Juan Petterson', email: 'juan@teste.com', active: true },
+  { _id: String(Math.random()), name: 'Juan Petterson 2', email: 'juan2@teste.com', active: false },
+  { _id: String(Math.random()), name: 'Juan Petterson 3', email: 'juan3@teste.com', active: true },
+];
+
 const resolvers = {
   Query: {
     hello: () => 'Hello World',
+    users: () => users,
+    getUserByEmail: (_, args) => {
+      return users.find(user => user.email === args.email);
+    },
   },
 };
 
