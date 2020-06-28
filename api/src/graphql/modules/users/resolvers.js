@@ -17,7 +17,15 @@ export default {
         userAdded: user,
       });
 
-      return user;
+      return {
+        errors: [
+          {
+            field: 'username',
+            message: 'wrong name',
+          },
+        ],
+        user,
+      };
     },
     updateUser: (_, { id, data }) => User.findByIdAndUpdate(id, data, { new: true }),
     deleteUser: async (_, { id }) => !!(await User.findByIdAndDelete(id)),

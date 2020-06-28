@@ -20,11 +20,21 @@ type Query {
 }
 
 type Mutation {
-  createUser(data: UserInput): User!
+  createUser(data: UserInput): RegisterResponse!
   updateUser(id: ID, data: UserInput): User!
   deleteUser(id: ID!): Boolean
 }
 
 type Subscription {
   userAdded: User!
+}
+
+type Error {
+  field: String!
+  message: String!
+}
+
+type RegisterResponse {
+  errors: [Error!]!
+  user: User
 }
