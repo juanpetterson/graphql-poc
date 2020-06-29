@@ -1,0 +1,15 @@
+.header {
+  background-color: #f4b860;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+
+  &__brand {
+    color: #32373b;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+}

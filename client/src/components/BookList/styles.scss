@@ -1,0 +1,27 @@
+.container {
+  margin: 1rem 2rem;
+}
+
+li {
+  list-style-type: none;
+  margin: 5px 0;
+}
+
+.book-list {
+  &__button {
+    margin-left: 10px;
+  }
+}
+
+.register-container {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+
+  input {
+    margin: 0 1rem;
+    outline: none;
+    border: 1px solid lightgray;
+    padding: 0.2rem;
+  }
+}
